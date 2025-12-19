@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional portfolio and personal brand website">
+    <title>Praise Tunde - Web Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles - KEPT EXACTLY LIKE YOUR ORIGINAL FILE */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root {
+            --bg-color: #1f242d;
+            --primary-color: #0ef;
+            --secondary-color: #fff;
+            --text-color: #fff;
+            --text-secondary: #b1b1b1;
+            --accent-color: #ff006e;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --section-padding: 80px 20px;
+            --transition: all 0.3s ease;
+            --border-radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-transform: capitalize;
+            border: none;
+            outline: none;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Base Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        /* Spacing System */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: var(--section-padding);
+            min-height: auto; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(31, 36, 45, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(135deg, rgba(31, 36, 45, 0.9), rgba(31, 36, 45, 0.7)), 
+                        url('https://picsum.photos/seed/tech/1920/1080.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 160px 20px 100px;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: var(--bg-color);
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 238, 255, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--bg-color);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item h4 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0;
+        }
+
+        /* RESUME PREVIEW SECTION */
+        #resume-preview {
+            background-color: rgba(255,255,255,0.02);
+            text-align: center;
+        }
+
+        .resume-preview-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- MODAL STYLES --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #2b303b;
+            margin: 5% auto;
+            padding: 0;
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 238, 255, 0.2);
+            animation: slideUp 0.4s;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: var(--primary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Modal Tabs */
+        .modal-tabs {
+            display: flex;
+            background-color: rgba(0,0,0,0.2);
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tab-btn {
+            background: transparent;
+            color: var(--text-secondary);
+            padding: 20px 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            flex: 1;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-color);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            background: rgba(0, 238, 255, 0.05);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .tab-content-container {
+            padding: 40px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Modal Scrollbar */
+        .tab-content-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .tab-content-container::-webkit-scrollbar-track {
+            background: #1f242d;
+        }
+        .tab-content-container::-webkit-scrollbar-thumb {
+            background: #3d4554;
+            border-radius: 4px;
+        }
+
+        /* Reuse styling for cards inside modal */
+        .experience-container, .education-container, .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card, .education-card, .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .experience-card { border-left: 4px solid var(--primary-color); }
+        .education-card { border-left: 4px solid var(--accent-color); }
+
+        .experience-header, .education-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-role { font-size: 1.2rem; font-weight: 600; color: var(--primary-color); }
+        .education-degree { font-size: 1.2rem; font-weight: 600; color: var(--accent-color); }
+        .experience-description ul { list-style: none; margin-left: 0; margin-top: 10px; }
+        .experience-description li { margin-bottom: 0.5rem; position: relative; padding-left: 20px; }
+        .experience-description li::before { content: '✓'; position: absolute; left: 0; color: var(--primary-color); }
+        
+        .skill-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: var(--bg-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-image img { transform: scale(1.1); }
+
+        .project-content { padding: 1.5rem; }
+        .project-title { color: var(--primary-color); font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .project-tag { background: rgba(0, 238, 255, 0.1); color: var(--primary-color); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, rgba(31, 36, 45, 0.95), rgba(31, 36, 45, 0.8)), 
+                        url('https://picsum.photos/seed/contact/1920/1080.jpg');
+            background-size: cover;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-item i { font-size: 2rem; color: var(--primary-color); }
+
+        /* Footer */
+        footer {
+            background-color: rgba(31, 36, 45, 0.95);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover { background: var(--primary-color); transform: translateY(-3px); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links {
+                position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px);
+                background: rgba(31, 36, 45, 0.98); flex-direction: column; align-items: center;
+                justify-content: center; gap: 2rem; transition: var(--transition);
+            }
+            .nav-links.active { left: 0; }
+            h1 { font-size: 2.5rem; }
+            .about-container { grid-template-columns: 1fr; text-align: center; }
+            .modal-tabs { flex-direction: column; }
+            .tab-btn { border-bottom: 1px solid rgba(255,255,255,0.1); border-left: 3px solid transparent; }
+            .tab-btn.active { border-bottom: 1px solid rgba(255,255,255,0.1); border-left: 3px solid var(--primary-color); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container container">
+            <a href="#hero" class="logo">Praise Tunde</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#" onclick="openModal('experience'); return false;">Resume</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="section">
+        <div class="hero-content container">
+            <h1>Web Developer</h1>
+            <p>Creating beautiful, functional websites that bring ideas to life. I am a 9-year-old developer passionate about coding.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View My Work</a>
+                <button class="btn btn-outline" onclick="openModal('experience')">My Resume</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="praise.jpg" alt="Profile Photo">
+                </div>
+                <div class="about-text">
+                    <h3>Hello, I'm Praise Tunde</h3>
+                    <p>I'm a passionate 9-year-old web developer with a keen eye for design. I have studied in <strong>He Reigns Academy</strong> and <strong>Goldland International</strong>.</p>
+                    <p>My approach combines technical skills with creativity. I love learning new things about computers every day.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <h4>3+</h4>
+                            <p>Projects</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>9+</h4>
+                            <p>Years Old</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>2</h4>
+                            <p>Schools</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume-preview" class="section">
+        <div class="container resume-preview-content">
+            <div class="section-title">
+                <h2>My Qualifications</h2>
+            </div>
+            <p style="margin: 0 auto 2rem auto;">
+                Explore my educational background and technical skillset.
+            </p>
+            <button class="btn" onclick="openModal('experience')">View Full Resume <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recent Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="books.png" alt="BOOKS">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Book Reading Site </h3>
+                        <p class="project-description">A cool website for reading books.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JS</span>
+                        </div>
+                        <a href="https://booksng.vercel.app/" class="btn">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image.jpg" alt="Coaching">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Coaching site</h3>
+                        <p class="project-description">An Coaching site.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Design</span>
+                        </div>
+                        <a href="https://udoka.vercel.app/" class="btn">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="image.png" alt="Portfolio Website">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">My Portfolio</h3>
+                        <p class="project-description">This website you are looking at right now!</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML/CSS</span>
+                            <span class="project-tag">Professional</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-container">
+    <p style="margin: 0 auto 2rem;">Have a project in mind? I'd love to hear from you. 4000 naira per project</p>
+    
+    <form id="contact-form" style="max-width: 600px; margin: 0 auto; text-align: left;" action="https://formspree.io/f/xvzpzplz" method="post">
+        <div style="margin-bottom: 15px;">
+            <input type="text" name="user_name" placeholder="Your Name" required 
+                style="width: 100%; padding: 12px; border-radius: 5px; background: var(--card-bg); color: white; border: 1px solid #3d4554;">
+        </div>
+        <div style="margin-bottom: 15px;">
+            <input type="email" name="user_email" placeholder="Your Email" required 
+                style="width: 100%; padding: 12px; border-radius: 5px; background: var(--card-bg); color: white; border: 1px solid #3d4554;">
+        </div>
+        <div style="margin-bottom: 15px;">
+            <textarea name="message" placeholder="Your Message" required 
+                style="width: 100%; padding: 12px; border-radius: 5px; background: var(--card-bg); color: white; border: 1px solid #3d4554; height: 150px;"></textarea>
+        </div>
+        <button type="submit" class="btn" style="width: 100%;" id="submit-btn">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+        <div class="contact-item"><i class="fas fa-envelope"></i><span>praisetunde15@gmail.com</span></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Nigeria</span></div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content container">
+            <p>&copy; 2025 Praise Tunde. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="resumeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            
+            <div class="modal-tabs">
+                <button class="tab-btn active" onclick="openTab('experience')">Experience</button>
+                <button class="tab-btn" onclick="openTab('education')">Education</button>
+                <button class="tab-btn" onclick="openTab('skills')">Skills</button>
+            </div>
+
+            <div class="tab-content-container">
+                <div id="experience" class="tab-panel active">
+                    <div class="experience-container">
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div class="experience-role">BOOKVERSE TEAM</div>
+                                <div class="experience-period">2025- Present</div>
+                            </div>
+                            <div class="experience-company">Tech Solutions Inc.</div>
+                            <div class="experience-description">
+                                <ul>
+                                    <li>Lead development of responsive web applications</li>
+                                    <li>Managed team of developers</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <div class="experience-role">UDOKA</div>
+                                <div class="experience-period">2025 - present</div>
+                            </div>
+                            <div class="experience-company">Coaching</div>
+                            <div class="experience-description">
+                                <ul>
+                                    <li>Developed user interfaces</li>
+                                    <li>Collaborated with designers</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="education" class="tab-panel">
+                    <div class="education-container">
+                        <div class="education-card">
+                            <div class="education-header">
+                                <div class="education-degree">Student</div>
+                                <div class="education-period">Previous</div>
+                            </div>
+                            <div class="education-institution">Goldland International</div>
+                            <div class="education-description">
+                                <p style="margin:0; font-size:1rem;">Primary Education</p>
+                                <p style="margin:0; font-size:0.9rem;">Foundation studies</p>
+                            </div>
+                        </div>
+                        <div class="education-card">
+                            <div class="education-header">
+                                <div class="education-degree">Student</div>
+                                <div class="education-period">Current</div>
+                            </div>
+                            <div class="education-institution">He Reigns Academy</div>
+                            <div class="education-description">
+                                <p style="margin:0; font-size:1rem;"> Secondary Education</p>
+                                <p style="margin:0; font-size:0.9rem;">Excellence in Studies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="skills" class="tab-panel">
+                    <div class="skills-container">
+                        <div class="skill-category">
+                            <h3>Technical Skills</h3>
+                            <div class="skill-item">
+                                <span class="skill-name">HTML/CSS</span>
+                                <span class="skill-level">Expert</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Soft Skills</h3>
+                            <div class="skill-item">
+                                <span class="skill-name">Problem Solving</span>
+                                <span class="skill-level">Expert</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Team Collaboration</span>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    
+        // --- Navigation Logic ---
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // --- Modal Logic ---
+        const modal = document.getElementById("resumeModal");
+        const closeBtn = document.querySelector(".close-modal");
+
+        // Function to open modal (can be called with specific tab name)
+        function openModal(defaultTab) {
+            modal.style.display = "block";
+            // Disable body scroll when modal is open
+            document.body.style.overflow = "hidden"; 
+            if(defaultTab) {
+                openTab(defaultTab);
+            }
+        }
+
+        // Close modal event
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        // Close if user clicks outside the content box
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // --- Tab Switching Logic ---
+        function openTab(tabName) {
+            var i, x, tablinks;
+            
+            // Hide all panels
+            x = document.getElementsByClassName("tab-panel");
+            for (i = 0; i < x.length; i++) {
+                x[i].classList.remove("active");
+                x[i].style.display = "none";
+            }
+            
+            // Remove active class from all buttons
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            // Show specific panel and add active class to button
+            document.getElementById(tabName).style.display = "block";
+            // Small delay to allow display:block to apply before adding opacity class for animation
+            setTimeout(() => {
+                document.getElementById(tabName).classList.add("active");
+            }, 10);
+            
+            // Find the button that called this function (if triggered by click) or by matching text
+            const buttons = document.getElementsByClassName("tab-btn");
+            for (let btn of buttons) {
+                if(btn.getAttribute('onclick').includes(tabName)) {
+                    btn.classList.add("active");
+                }
+            }
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return; // Ignore empty links
+                
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
